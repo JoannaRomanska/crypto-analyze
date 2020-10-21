@@ -1,6 +1,6 @@
 # crypto-analyze
 
-## Oclif cli application to analyze text files and decode using defined alphabet.
+## Oclif cli application to analyze text files and decode them using defined alphabet.
 
 ### Installation
 
