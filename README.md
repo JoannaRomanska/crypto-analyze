@@ -7,6 +7,8 @@
 ```
 cd crypto_analyze
 npm install
+npm install -g oclif
+
 ```
 ### Run commands
 
