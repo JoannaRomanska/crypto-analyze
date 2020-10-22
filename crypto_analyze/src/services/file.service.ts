@@ -5,7 +5,6 @@ import * as _ from 'lodash';
 const fsPromises = fs.promises;
 
 class FileService {
-    private analizedText: any;
 
     public async readFile(filepath: string): Promise<string> {
         return fsPromises.readFile(path.join(filepath), "utf8");
@@ -13,16 +12,17 @@ class FileService {
 
     public analyzeFile(data: any) {
         let conjs: string[] = [];
+        let analizedText: any = {};
 
         data.split(' ').map((elem: string) => {
             elem.length == 1 && !conjs.includes(elem) ? conjs.push(elem) : '';
             elem.split('').map((char: string) => {
-                this.analizedText[char] = this.analizedText[char] ? this.analizedText[char] + 1 : 1;
+                analizedText[char] = analizedText[char] ? analizedText[char] + 1 : 1;
             })
         });
 
         console.log("Conjs:", conjs);
-        console.log("Letters count:", this.analizedText);
+        console.log("Letters count:", analizedText);
     }
 
     public decodeFile(data: string) {
