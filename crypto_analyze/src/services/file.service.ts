@@ -14,15 +14,19 @@ class FileService {
         let conjs: string[] = [];
         let analizedText: any = {};
 
-        data.split(' ').map((elem: string) => {
+        data.split('').map((elem: string) => {
             elem.length == 1 && !conjs.includes(elem) ? conjs.push(elem) : '';
             elem.split('').map((char: string) => {
                 analizedText[char] = analizedText[char] ? analizedText[char] + 1 : 1;
             })
         });
+        const sortable = Object.entries(analizedText)
+            .sort(([, a], [, b]) => <any>a - <any>b)
+            .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+
 
         console.log("Conjs:", conjs);
-        console.log("Letters count:", analizedText);
+        console.log("Letters count:", sortable);
     }
 
     public decodeFile(data: string) {
